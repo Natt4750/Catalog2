@@ -2,6 +2,7 @@ package com.example.catalog2.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
@@ -38,7 +39,29 @@ public class DetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
-        queue = Volley.newRequestQueue(this);
+
+        teamNameID_details= findViewById(R.id.teamNameID_details);
+        teamIdID_details= findViewById(R.id.teamIdID_details);
+        teamImageID_details=findViewById(R.id.teamImageID_details);
+
+        Intent intent = getIntent();
+        String nameS = intent.getStringExtra("name");
+        String idS = intent.getStringExtra("id");
+        String logoS = intent.getStringExtra("logo");
+
+
+
+        teamNameID_details.setText(nameS);
+        teamIdID_details.setText(idS);
+
+        Picasso.get()
+                .load(logoS)
+                .fit()
+                .into(teamImageID_details);
+
+
+
+        /*queue = Volley.newRequestQueue(this);
 
         team = (Team) getIntent().getSerializableExtra("team");
         teamId = team.getId();
@@ -46,10 +69,10 @@ public class DetailsActivity extends AppCompatActivity {
         teamIdID_details=findViewById(R.id.teamIdID_details);
         teamImageID_details=findViewById(R.id.teamImageID_details);
 
-        getTeamDetails(teamId);
+        getTeamDetails(teamId);*/
     }
 
-    private void getTeamDetails(String id) {
+    /*private void getTeamDetails(String id) {
         String myUrl = "https://api-basketball.p.rapidapi.com/teams?league=" + id + "&season=2019-2020";
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, myUrl, null, new Response.Listener<JSONObject>() {
             @Override
@@ -58,8 +81,9 @@ public class DetailsActivity extends AppCompatActivity {
 
                 try {
 
-                    teamNameID_details.setText("Name: " + response.getString("name"));
-                    teamIdID_details.setText("ID: " + response.getString("id"));
+
+                   teamNameID_details.setText("Name: " + response.getString("name"));
+                   teamIdID_details.setText("ID: " + response.getString("id"));
 
                     Picasso.get()
                             .load(response.getString("Poster"))
@@ -91,6 +115,6 @@ public class DetailsActivity extends AppCompatActivity {
         ;
         queue.add(jsonObjectRequest);
 
-    }
+    }*/
 
     }

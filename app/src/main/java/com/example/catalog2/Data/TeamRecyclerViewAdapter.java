@@ -2,6 +2,8 @@ package com.example.catalog2.Data;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +20,7 @@ import com.example.catalog2.Model.Team;
 import com.example.catalog2.R;
 import com.squareup.picasso.Picasso;
 
+import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 public class TeamRecyclerViewAdapter extends RecyclerView.Adapter<TeamRecyclerViewAdapter.ViewHolder>
@@ -80,9 +83,18 @@ public class TeamRecyclerViewAdapter extends RecyclerView.Adapter<TeamRecyclerVi
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
+                    String nameS= name.getText().toString();
+                    String idS = id.getText().toString();
+                    String logoS = logo.getDrawable().toString();
+
                     Team team=teamList.get(getAdapterPosition());
                     Intent intent = new Intent(context, DetailsActivity.class);
+
                     intent.putExtra("team", team);
+                    intent.putExtra("logo", logoS);
+                    intent.putExtra("name", nameS);
+                    intent.putExtra("id", idS);
                     ctx.startActivity(intent);
                 }
             });
