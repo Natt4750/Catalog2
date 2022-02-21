@@ -47,8 +47,8 @@ public class DetailsActivity extends AppCompatActivity {
         Intent intent = getIntent();
         team = (Team) getIntent().getSerializableExtra("team");
 
-        teamNameID_details.setText(team.getName());
-        teamIdID_details.setText(team.getId());
+        teamNameID_details.setText("Name: " + team.getName());
+        teamIdID_details.setText("Id: "+ team.getId());
 
         Picasso.get()
                 .load(team.getLogo())
