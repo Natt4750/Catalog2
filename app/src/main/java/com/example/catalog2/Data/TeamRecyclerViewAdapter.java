@@ -83,18 +83,9 @@ public class TeamRecyclerViewAdapter extends RecyclerView.Adapter<TeamRecyclerVi
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
-                    String nameS= name.getText().toString();
-                    String idS = id.getText().toString();
-                    String logoS = logo.getDrawable().toString();
-
                     Team team=teamList.get(getAdapterPosition());
                     Intent intent = new Intent(context, DetailsActivity.class);
-
                     intent.putExtra("team", team);
-                    intent.putExtra("logo", logoS);
-                    intent.putExtra("name", nameS);
-                    intent.putExtra("id", idS);
                     ctx.startActivity(intent);
                 }
             });
