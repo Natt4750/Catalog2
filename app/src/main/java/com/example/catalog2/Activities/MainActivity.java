@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
        getMenuInflater().inflate(R.menu.recherche, menu);
        MenuItem menuItem = menu.findItem(R.id.action_search);
         SearchView searchView =(SearchView) menuItem.getActionView();
-        searchView.setQueryHint("Write the league number");
+        searchView.setQueryHint("Write the league number between 1 - 50");
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("Erruer", "Err" + error);
+                Log.d("Erreur", "Err" + error);
             }
         })
         {
